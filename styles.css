@@ -57,3 +57,42 @@ header > h1 {
 .text-out > p {
   text-align: center;
 }
+
+table.guessesDiv {
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 30px;
+  margin-left: 30%;
+  margin-right: auto;
+  text-align: right;
+}
+
+#incorrectLetters {
+  text-align: left;
+}
+
+#correctLetters {
+  text-align: left;
+}
+
+
+.text-input {
+  margin: auto;
+  text-align: center;
+}
+
+#myText {
+  font-size: 30px;
+}
+
+#submitButton {
+  font-size: 20px;
+}
+
+.playerContainer {
+  position:absolute;
+  margin:auto;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
