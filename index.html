@@ -16,40 +16,43 @@
       <div id="max-incorrect-guesses" class="badge">Maximum incorrect guesses</div>
       <span id="user-score">0</span>/<span id="max-incorrect-guesses-number">8</span>
     </div>
+
     <!-- text output-->
     <div class="text-out">
-      <!-- <button onclick="myFunction()">Play</button> -->
+      <!-- <button onclick="submitInput()">Play</button> -->
       <p>Welcome to the game of Hangman! Type a secret word in text box to start.</p>
     </div>
 
     <!-- available letters list-->
-    <div class="available-letters">
-      <p> a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
-    </div>
-    <!-- incorrect guesses list-->
-    <div class="incorrect-guesses">
-      <p>testing</p>
-    </div>
-    <!-- correct guesses -->
-    <div class="correct-guesses">
-      <p>testing</p>
-    </div>
+    <table class="guessesDiv">
+      <tr class="available">
+        <td id="availableTitle"> Available letters: </td>
+        <td id="availableLetters"> a b c d e f g h i j k l m n o p q r s t u v w x y z</td>
+      </tr>
+      <tr class="incorrect">
+        <td id="incorrectTitle">Incorrect guesses:</td>
+        <td id="incorrectLetters">Testing the incorrect letters</td>
+      </tr>
+      <tr class="correct">
+        <td id="correctTitle">Words thus far:</td>
+        <td id="correctLetters">Testing some correct letters</td>
+      </tr>
+    </table>
 
     <!-- text input-->
     <div class="text-input">
-      <input type="text" id="myText" value="Enter info here...">
-      <button onclick="myFunction()">Enter info</button>
+      <input type="text" id="myText" value="Enter secret word"> <!--  change preload text?? -->
+      <button id="submitButton" onclick="submitInput()"> Start Game </button>
       <p id="User-input"></p>
-    </div>
-    <script>
-      function myFunction() {
-        var x = document.getElementById("myText").value;
-        document.getElementById("User-input").innerHTML = x;
-      }
-    </script>
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div id="player"></div>
 
+    </div>
+
+
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div class="playerContainer" id="player"></div>
+
+
+    <!-- <script src="videoPlayer.js" charset="utf-8"></script> -->
     <script src="app.js" charset="utf-8"></script>
   </body>
 </html>
