@@ -6,15 +6,47 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <!--Website header    -->
     <header>
-      <h1>Hangman featuring James Franco in the Ballad of Buster Scruggs</h1>
+      <h1>Hangman featuring James Franco</h1>
     </header>
-
+    <!--     scores-->
     <div class="score-board">
-      <div id="incorrect-guesses">Incorrect guesses</div>
-      <div id="max-incorrect-guesses">Maximum incorrect guesses</div>
-      <span id="user-score">0</span>/<span id="max-incorrect-guesses-number">7</span>
+      <div id="incorrect-guesses" class="badge">Incorrect guesses</div>
+      <div id="max-incorrect-guesses" class="badge">Maximum incorrect guesses</div>
+      <span id="user-score">0</span>/<span id="max-incorrect-guesses-number">8</span>
     </div>
+    <!-- text output-->
+    <div class="text-out">
+      <!-- <button onclick="myFunction()">Play</button> -->
+      <p>Welcome to the game of Hangman! Type a secret word in text box to start.</p>
+    </div>
+
+    <!-- available letters list-->
+    <div class="available-letters">
+      <p> a b c d e f g h i j k l m n o p q r s t u v w x y z</p>
+    </div>
+    <!-- incorrect guesses list-->
+    <div class="incorrect-guesses">
+      <p>testing</p>
+    </div>
+    <!-- correct guesses -->
+    <div class="correct-guesses">
+      <p>testing</p>
+    </div>
+
+    <!-- text input-->
+    <div class="text-input">
+      <input type="text" id="myText" value="Enter info here...">
+      <button onclick="myFunction()">Enter info</button>
+      <p id="User-input"></p>
+    </div>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myText").value;
+        document.getElementById("User-input").innerHTML = x;
+      }
+    </script>
     <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
     <div id="player"></div>
 
