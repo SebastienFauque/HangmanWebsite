@@ -1,73 +1,14 @@
-// define alphabetFull
-const alphabetFull = 'abcdefghijklmnopqrstuvwyxz';
-//document.getElementById("submitButton").disabled = true; // sets disabled flag for submit button pre playgame
-const incorrectGuesses_div = document.getElementById("incorrect-guesses");
-const maxincorrectGuesses_div = document.getElementById("max-incorrect-guesses");
-let submitButton_div = document.getElementById("submitButton");
-let startButton_div = document.getElementById("startButton");
-let textoutput_p = document.getElementById("text-output").innerHTML;
-let myText_input = document.getElementById("myText").value;
+// define variables
+const startGame_button = document.getElementByID("startButton");
 
 
-// define guessesObj - need to add secretWord
-let guessesObj = {
-  available: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
-  incorrectGuesses: '',
-};
+startGame_button.addEventListener('click', function() {
+  console.log('Game started')
+})
 
-// function submitInput() {
-//   console.log("in submitInput");
-//   var userInput =  myText_input;
-//   return userInput;
-// };
+// Event listener for new game
+function main() {
 
-
-
-
-function playGame(guessesObj) {
-  console.log("in playGame");
-  //var myText_input = submitInput(); // import from textbox
-
-  //document.getElementById("submitButton").disabled = false; // enable submit button
-  console.log("userInput", myText_input);
-  console.log("typeof", typeof myText_input);
-
-
-  //while loop for getting valid secret word
-  while (isValidWord(myText_input) === false) {
-    // change whitetext to ask for a valid secret word
-    textoutput_p= "Invalid word, enter a valid word";
-    submitButton.addEventListener('click', function() {
-      console.log("u click submit" )
-      //game("r");
-    })
-    // update myText_div secret word value
-    myText_div = document.getElementById("myText").value;
-  }
-  // change whitetext to ask for letterGuess
-  // submitInput() to save letterGuess to "myText"
-  //   let correctLength = "myText".length === 1;
-  //   let availableLetter = guessObjAvailableList.includes(tempGuess);
-  //   let isNotSpace = tempGuess !== ' ';
-
-
-  console.log("passed while loop", myText_div);
-
-
-
-  // document.getElementById("text-out").innerHTML = myText_div; // export to html white text
-}
-
-
-
-
-function isValidWord(textboxInput_div) {
-  console.log("in isValidWord")
-  if (textboxInput_div.length >= 1 && alphabetFull.includes(textboxInput_div)) {
-
-    return true;
-  }
-  return false;
 }
 
 
@@ -78,12 +19,13 @@ function isValidWord(textboxInput_div) {
 
 
 
-      // Done make playlist with each clip or many clips from same video
-      // autoplay each clip
-      // Done stop clip after approx. 6 seconds
-      // cycle to the next clip upon wrong answer
-      // autoplay next clip
-      // reset for each new game
+
+
+
+
+
+
+
 
 
 // videoPlayer.js
@@ -246,3 +188,4 @@ function stopVideo() {
 }
 
 // On start game button click, run the playGame function
+main();
