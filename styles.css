@@ -49,12 +49,12 @@ header > h1 {
   right: -300px;
 }
 
-.text-out {
+#text-out {
   font-size: 40px;
   color: white;
 }
 
-.text-out > p {
+#text-out > p {
   text-align: center;
 }
 
