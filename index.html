@@ -18,9 +18,8 @@
     </div>
 
     <!-- text output-->
-    <div class="text-out">
-      <!-- <button onclick="submitInput()">Play</button> -->
-      <p>Welcome to the game of Hangman! Type a secret word in text box to start.</p>
+    <div id="text-out">
+      <p id='text-output'>Welcome to the game of Hangman! Type a secret word in text box to start.</p>
     </div>
 
     <!-- available letters list-->
@@ -42,9 +41,9 @@
     <!-- text input-->
     <div class="text-input">
       <input type="text" id="myText" value="Enter secret word"> <!--  change preload text?? -->
-      <button id="submitButton" onclick="submitInput()"> Start Game </button>
-      <p id="User-input"></p>
-
+      <button id="submitButton" onclick="submitInput()"> Submit </button>
+      <!-- <p id="User-input"></p> -->
+      <button id="startButton" onclick="playGame()"> New game </button>
     </div>
 
 
