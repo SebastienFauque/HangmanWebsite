@@ -1,5 +1,13 @@
 // define alphabetFull
 const alphabetFull = 'abcdefghijklmnopqrstuvwyxz';
+//document.getElementById("submitButton").disabled = true; // sets disabled flag for submit button pre playgame
+const incorrectGuesses_div = document.getElementById("incorrect-guesses");
+const maxincorrectGuesses_div = document.getElementById("max-incorrect-guesses");
+let submitButton_div = document.getElementById("submitButton");
+let startButton_div = document.getElementById("startButton");
+let textoutput_p = document.getElementById("text-output").innerHTML;
+let myText_input = document.getElementById("myText").value;
+
 
 // define guessesObj - need to add secretWord
 let guessesObj = {
@@ -7,105 +15,60 @@ let guessesObj = {
   incorrectGuesses: '',
 };
 
-let incorrectGuesses_div = document.getElementById("incorrect-guesses");
-let correctGuesses_div = document.getElementById("correct-guesses");
+// function submitInput() {
+//   console.log("in submitInput");
+//   var userInput =  myText_input;
+//   return userInput;
+// };
 
 
-function getUserInput() {
-  let userInput = document.getElementById("myText").value;
-  return userInput
+
+
+function playGame(guessesObj) {
+  console.log("in playGame");
+  //var myText_input = submitInput(); // import from textbox
+
+  //document.getElementById("submitButton").disabled = false; // enable submit button
+  console.log("userInput", myText_input);
+  console.log("typeof", typeof myText_input);
+
+
+  //while loop for getting valid secret word
+  while (isValidWord(myText_input) === false) {
+    // change whitetext to ask for a valid secret word
+    textoutput_p= "Invalid word, enter a valid word";
+    submitButton.addEventListener('click', function() {
+      console.log("u click submit" )
+      //game("r");
+    })
+    // update myText_div secret word value
+    myText_div = document.getElementById("myText").value;
+  }
+  // change whitetext to ask for letterGuess
+  // submitInput() to save letterGuess to "myText"
+  //   let correctLength = "myText".length === 1;
+  //   let availableLetter = guessObjAvailableList.includes(tempGuess);
+  //   let isNotSpace = tempGuess !== ' ';
+
+
+  console.log("passed while loop", myText_div);
+
+
+
+  // document.getElementById("text-out").innerHTML = myText_div; // export to html white text
 }
 
-// takes input from text box
-function submitInput() {
-  var x = document.getElementById("myText").value; // sets x to the value in text box on click
-  document.getElementById("User-input").innerHTML = x; // changes id "user-input" to x in HTML file
-};
 
-// Main function
-function playGame(theGuessesObj) {
-// ask for player names
-//const host = prompt('Initial host, what is your name?');
-//const guesser = prompt('Initial guesser, what is your name');
 
-  // define missCounter
-  let missCounter = 0;
 
-  // Get secretWord
-  let secretWord = askForSecretWord(checkWord);
+function isValidWord(textboxInput_div) {
+  console.log("in isValidWord")
+  if (textboxInput_div.length >= 1 && alphabetFull.includes(textboxInput_div)) {
 
-  // add correctGuesses to guessesObj
-  guessesObj['correctGuesses'] = '_'.repeat(secretWord.length);
-
-  // Ask for guess if game is not over
-  while (!isGameOver(guessesObj, secretWord, guesser)) {
-    let guessLetter = takeGuess(guessesObj['available'], guesser);
-    // Update guessesObj.available string
-    guessesObj['available'] = guessesObj['available'].replace(guessLetter, ' ');
-    // if correct guess, update guessesObj.correctGuesses
-    if (secretWord.includes(guessLetter)) {
-      guessesObj['correctGuesses'] = updateCorrect(guessLetter, secretWord, guessesObj);
-    } else {
-      missCounter++;
-      guessesObj = updateIncorrect(guessLetter, guessesObj);
-      scaffold = updateScaffold(missCounter, scaffold);
-    };
-    console.log(scaffold);
-    console.log(guessesObj);
-  }; //close while
-
-  console.log(`The secret word is ${secretWord}`);
-  let anotherGame = prompt(`Do you want to play again? (y/n)`).toString();
-  while (anotherGame !== 'y' && anotherGame !== 'n') {
-    console.log('Enter a valid response (y/n)');
-    anotherGame = prompt(`Do you want to play again? (y/n)`).toString();
+    return true;
   }
-
-  if (anotherGame === 'y') {
-    console.clear();
-    console.log('New Game!')
-    playGame({
-              available: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
-              incorrectGuesses: '',
-    });
-  }
-    else {
-    console.log('Goodbye!');
-  };
-}; // end playGame function
-
-
-// // Ask Host for word input and save as a variable
-function askForSecretWord(callbackFunction, /*input from text box */) {
-  //input: checkWord (callbackFunction)
-  //output: guessWord
-  let tempGuessWord = // input from textbox ;
-  tempGuessWord.toString().toLowerCase();
-  while (callbackFunction(tempGuessWord) === false) {
-    tempGuessWord = //input from textbox;
-    tempGuessWord.toString().toLowerCase();
-  }
-  return tempGuessWord;
-}; // end askForSecretWord
-
-function checkWord(wordToCheck) {
-  //input: tempGuessWord
-  //output: isWordValid
-  let isWordValid = true;
-  if (wordToCheck.length === 0) {
-    isWordValid = false;
-    return isWordValid;
-  }
-  for (let i = 0; i < wordToCheck.length; i++) {
-    let letter = wordToCheck[i];
-    if (alphabetFull.includes(letter)) {
-    } else {
-      isWordValid = false;
-      return isWordValid;
-    };
-  };
-  return isWordValid;
-}; // end checkWord
+  return false;
+}
 
 
 
@@ -281,3 +244,5 @@ function onPlayerStateChange(event) {
 function stopVideo() {
   player.stopVideo();
 }
+
+// On start game button click, run the playGame function
