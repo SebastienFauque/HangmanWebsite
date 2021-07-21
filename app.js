@@ -13,21 +13,6 @@ function main() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // videoPlayer.js
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -161,6 +146,7 @@ var videosArr = [
     }
   }
 ]
+
 function onYouTubeIframeAPIReady() {
   // add looping function around here to loop each video in
   for (let i = 0; i < videosArr.length; i++) {

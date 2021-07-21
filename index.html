@@ -17,41 +17,57 @@
       <span id="user-score">0</span>/<span id="max-incorrect-guesses-number">8</span>
     </div>
 
+    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+    <div class="playerContainer" id="player"></div>
+
     <!-- text output-->
     <div id="text-out">
       <p id='text-output'>Welcome to the game of Hangman! Type a secret word in text box to start.</p>
     </div>
 
-    <!-- available letters list-->
-    <table class="guessesDiv">
-      <tr class="available">
-        <td id="availableTitle"> Available letters: </td>
-        <td id="availableLetters"> a b c d e f g h i j k l m n o p q r s t u v w x y z</td>
-      </tr>
-      <tr class="incorrect">
-        <td id="incorrectTitle">Incorrect guesses:</td>
-        <td id="incorrectLetters">Testing the incorrect letters</td>
-      </tr>
-      <tr class="correct">
-        <td id="correctTitle">Words thus far:</td>
-        <td id="correctLetters">Testing some correct letters</td>
-      </tr>
-    </table>
+    <div class="buttons-container">
+      <button id='a' class="buttonStyle" onclick="clickA()">a</button>
+      <button id='b' class="buttonStyle" onclick="clickB()">b</button>
+      <button id='c' class="buttonStyle" onclick="clickC()">c</button>
+      <button id='d' class="buttonStyle" onclick="clickD()">d</button>
+      <button id='e' class="buttonStyle" onclick="clickE()">e</button>
+      <button id='f' class="buttonStyle" onclick="clickF()">f</button>
+      <button id='g' class="buttonStyle" onclick="clickG()">g</button>
+      <button id='h' class="buttonStyle" onclick="clickH()">h</button>
+      <button id='i' class="buttonStyle" onclick="clickI()">i</button>
+      <button id='j' class="buttonStyle" onclick="clickJ()">j</button>
+      <button id='k' class="buttonStyle" onclick="clickK()">k</button>
+      <button id='l' class="buttonStyle" onclick="clickL()">l</button>
+      <button id='m' class="buttonStyle" onclick="clickM()">m</button>
+      <br>
+      <button id='n' class="buttonStyle" onclick="clickN()">n</button>
+      <button id='o' class="buttonStyle" onclick="clickO()">o</button>
+      <button id='p' class="buttonStyle" onclick="clickP()">p</button>
+      <button id='q' class="buttonStyle" onclick="clickQ()">q</button>
+      <button id='r' class="buttonStyle" onclick="clickR()">r</button>
+      <button id='s' class="buttonStyle" onclick="clickS()">s</button>
+      <button id='t' class="buttonStyle" onclick="clickT()">t</button>
+      <button id='u' class="buttonStyle" onclick="clickU()">u</button>
+      <button id='v' class="buttonStyle" onclick="clickV()">v</button>
+      <button id='w' class="buttonStyle" onclick="clickW()">w</button>
+      <button id='x' class="buttonStyle" onclick="clickX()">x</button>
+      <button id='y' class="buttonStyle" onclick="clickY()">y</button>
+      <button id='z' class="buttonStyle" onclick="clickZ()">z</button>
+
+    </div>
+
 
     <!-- text input-->
     <div class="text-input">
       <input type="text" id="myText" placeholder = "Enter secret word" value=""> <!--  enter something into textbox -->
-      <button id="submitButton" onclick="submitInput()"> Submit </button> <!-- assign textbox text to app.js variable named myText_input-->
-      <!-- <p id="User-input"></p> -->
-      <button id="startButton" onclick="main()"> New game </button>
+      <button id="newGameButton" onclick="submitInput()"> New Game </button> <!-- assign textbox text to app.js variable named myText_input-->
     </div>
 
 
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div class="playerContainer" id="player"></div>
 
 
-    <!-- <script src="videoPlayer.js" charset="utf-8"></script> -->
+
+    <script src="videoPlayer.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
   </body>
 </html>
