@@ -25,6 +25,10 @@
       <p id='text-output'>Welcome to the game of Hangman! Type a secret word in text box to start.</p>
     </div>
 
+    <div class="correct-guesses-container">
+      <p id="correct-guesses-word">---------------</p>
+    </div>
+
     <div class="buttons-container">
       <button id='a' class="buttonStyle" onclick="clickA()">a</button>
       <button id='b' class="buttonStyle" onclick="clickB()">b</button>
@@ -60,7 +64,7 @@
 
     <!-- text input-->
     <div class="text-input">
-      <input type="text" id="myText" placeholder = "Enter secret word" value=""> <!--  enter something into textbox -->
+      <input type="text" id="secret-word" placeholder = "Enter secret word" value=""> <!--  enter something into textbox -->
       <button id="newGameButton" onclick="submitInput()"> New Game </button> <!-- assign textbox text to app.js variable named myText_input-->
     </div>
 
