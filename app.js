@@ -1,18 +1,64 @@
 // define variables
-const startGame_button = document.getElementByID("startButton");
+const newGame_button = document.getElementByID("newGameButton");
+const alphabetFull = 'abcdefghijklmnopqrstuvwyxz';
 
-
-startGame_button.addEventListener('click', function() {
+newGame_button.addEventListener('click', function() {
   console.log('Game started')
 })
+
+
+let guessesObj = {
+  available: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
+  incorrectGuesses: '',
+};
 
 // Event listener for new game
 function main() {
 
 }
 
+// get input from html file
+function getUserInput() {
+  // while loop to check input???
+  const regex = /[^a-z]/gi; // use userInput.match(regex);
+
+  let userInput = document.getElementById("secret-word").value;
+  console.log(userInput);
+  return userInput.toLowerCase();
+}
 
 
+function checkLetter(guessLetter) {
+
+  // check if secretWord includes guessLetter
+  // update <p id="correct-guesses-word">
+
+
+}
+
+
+function clickA() {
+  checkLetter(a)
+  // adjust guessesObj
+  // checks input A against secret word
+  // greys out button
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//
 // videoPlayer.js
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
@@ -172,6 +218,10 @@ function onPlayerStateChange(event) {
 function stopVideo() {
   player.stopVideo();
 }
+
+// function clickA()
+//       hover color
+//       userChoice_div.classList.add('red-glow');
 
 // On start game button click, run the playGame function
 main();
