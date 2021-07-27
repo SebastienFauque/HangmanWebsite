@@ -1,62 +1,44 @@
 // define variables
-const newGame_button = document.getElementByID("newGameButton");
-const alphabetFull = 'abcdefghijklmnopqrstuvwyxz';
+const newGame_button = document.addEventListener("newGameButton", function() {
+  console.log('hello')
+});
+let currentIncorrectGuesses = 0;
+const correctGuessesWord_span = document.getElementByID("correctGuessesWord");
+const textOutput_span = document.getElementByID("textOutput");
+const currentIncorrectGuesses_span = document.getElementByID("currentIncorrectGuesses");
+const secretWord_input = document.getElementById("secretWord").value;
+//const secretWord = document.getElementById("secretWord").value;
+
 
 newGame_button.addEventListener('click', function() {
   console.log('Game started')
 })
 
 
-let guessesObj = {
-  available: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
-  incorrectGuesses: '',
-};
+
+// let guessesObj = {
+//   available: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
+//   incorrectGuesses: '',
+// };
 
 // Event listener for new game
 function main() {
-
+  // start new game
+  console.log('refreshed page');
+  newGame_button.addEventListener('click', function() {
+    console.log("you started a new game")
+  })
 }
 
 // get input from html file
-function getUserInput() {
+function startNew() {
   // while loop to check input???
   const regex = /[^a-z]/gi; // use userInput.match(regex);
-
-  let userInput = document.getElementById("secret-word").value;
-  console.log(userInput);
-  return userInput.toLowerCase();
+  secretWord = secretWord.toLowerCase();
+  let underscoresLength = secretWord.length();
+  console.log('secret word: ', secretWord_input)
+  return secretWord;
 }
-
-
-function checkLetter(guessLetter) {
-
-  // check if secretWord includes guessLetter
-  // update <p id="correct-guesses-word">
-
-
-}
-
-
-function clickA() {
-  checkLetter(a)
-  // adjust guessesObj
-  // checks input A against secret word
-  // greys out button
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 //
 // videoPlayer.js
