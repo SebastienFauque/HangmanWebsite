@@ -1,44 +1,94 @@
 // define variables
-const newGame_button = document.addEventListener("newGameButton", function() {
-  console.log('hello')
-});
+const newGame_button = document.getElementById("newGameButton");
+
 let currentIncorrectGuesses = 0;
-const correctGuessesWord_span = document.getElementByID("correctGuessesWord");
-const textOutput_span = document.getElementByID("textOutput");
-const currentIncorrectGuesses_span = document.getElementByID("currentIncorrectGuesses");
-const secretWord_input = document.getElementById("secretWord").value;
+var correctGuessesWord_span = document.getElementById("correctGuessesWord");
+const textOutput_span = document.getElementById("textOutput");
+const currentIncorrectGuesses_span = document.getElementById("currentIncorrectGuesses");
+let secretWord_input = document.getElementById("secretWord").value;
 //const secretWord = document.getElementById("secretWord").value;
-
-
-newGame_button.addEventListener('click', function() {
-  console.log('Game started')
-})
-
-
 
 // let guessesObj = {
 //   available: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
 //   incorrectGuesses: '',
 // };
 
-// Event listener for new game
-function main() {
-  // start new game
-  console.log('refreshed page');
-  newGame_button.addEventListener('click', function() {
-    console.log("you started a new game")
-  })
+
+// listen for new game button click
+newGame_button.addEventListener('click', function() {
+  console.log('new game button has been pressed')
+  let gameState = started
+  getSecretWord();
+  //Uncomment once game function is made
+  // game()
+});
+
+function getSecretWord(){
+  secretWord_input = document.getElementById("secretWord").value;
+  let unverifiedSecretWord = secretWord_input
+  return unverifiedSecretWord;
 }
+
+// UNIT TEST: getSecretWord
+console.log(getSecretWord() === 'abcd') // true; if 'abcd' entered into text input box
+
+
+// function updateWhiteText(gameState) {
+//   console.log('in updateWhiteText');
+//   switch(gameState) {
+//     case started:
+//       textOutput_span.innerHTML = "Game started, pick a letter";
+//       break;
+//     case win:
+//       textOutput_span.innerHTML = "Good job, you won!!";
+//       break;
+//     case lose:
+//       textOutput_span.innerHTML = "He's dead, Jim";
+//       break;
+//     case correct:
+//       textOutput_span.innerHTML = "Nice guess, pick another letter";
+//       break;
+//     case correct:
+//       textOutput_span.innerHTML = "Oooh darn, pick another letter";
+//       break;
+//   }
+
+// }
+
+
+
+
+function isSecretWordValid() {
+
+
+  //delete non regex chars of input
+  const regex = /[^a-z]/gi; // use userInput.match(regex);
+
+
+}
+
 
 // get input from html file
 function startNew() {
-  // while loop to check input???
-  const regex = /[^a-z]/gi; // use userInput.match(regex);
+
   secretWord = secretWord.toLowerCase();
   let underscoresLength = secretWord.length();
   console.log('secret word: ', secretWord_input)
   return secretWord;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //
 // videoPlayer.js
@@ -206,4 +256,3 @@ function stopVideo() {
 //       userChoice_div.classList.add('red-glow');
 
 // On start game button click, run the playGame function
-main();
