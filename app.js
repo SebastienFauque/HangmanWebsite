@@ -6,7 +6,7 @@ var correctGuessesWord_span = document.getElementById("correctGuessesWord");
 const textOutput_span = document.getElementById("textOutput");
 const currentIncorrectGuesses_span = document.getElementById("currentIncorrectGuesses");
 let secretWord_input = document.getElementById("secretWord").value;
-//const secretWord = document.getElementById("secretWord").value;
+const testAlpha_button = document.getElementById("testAlpha").value;
 
 // let guessesObj = {
 //   available: 'a b c d e f g h i j k l m n o p q r s t u v w x y z',
@@ -14,23 +14,46 @@ let secretWord_input = document.getElementById("secretWord").value;
 // };
 
 
+//*******************************************
+// VERIFIED AS DONE
 // listen for new game button click
 newGame_button.addEventListener('click', function() {
   console.log('new game button has been pressed')
-  let gameState = started
-  getSecretWord();
-  //Uncomment once game function is made
-  // game()
+  const secretWordResult = getSecretWord();
+  return secretWordResult;
 });
 
+  //check if secret word format is correct
 function getSecretWord(){
   secretWord_input = document.getElementById("secretWord").value;
-  let unverifiedSecretWord = secretWord_input
-  return unverifiedSecretWord;
+  const verifiedSecretWord = checkSecretWord(secretWord_input)
+  return verifiedSecretWord;
+};
+
+function checkSecretWord(secretWord_input) {
+  //accepts only letters
+  const regex = /[A-Za-z]/gi; // use userInput.match(regex);
+  let matches = secretWord_input.match(regex)
+  console.log(matches);
+  if (matches === null) {
+    textOutput_span.innerHTML = `The entered word ${matches} was not correct, insert a new word and click "New Game".`
+  } else if (matches.length) {
+    textOutput_span.innerHTML = `OK! Pick a Letter.`
+    return matches.join('').toLowerCase();
+  }
+};
+// ***************************************************
+
+
+const chooseLetter = function(secretWordResult) {
+  const letter = do
+  // notes for tuesday aug 3rd
+  // if secret word is valid
+    // return letter;
+  //
 }
 
-// UNIT TEST: getSecretWord
-console.log(getSecretWord() === 'abcd') // true; if 'abcd' entered into text input box
+
 
 
 // function updateWhiteText(gameState) {
@@ -58,14 +81,7 @@ console.log(getSecretWord() === 'abcd') // true; if 'abcd' entered into text inp
 
 
 
-function isSecretWordValid() {
 
-
-  //delete non regex chars of input
-  const regex = /[^a-z]/gi; // use userInput.match(regex);
-
-
-}
 
 
 // get input from html file
