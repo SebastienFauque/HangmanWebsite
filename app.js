@@ -1,186 +1,122 @@
-// define variables
+//HTML Variables
+let currentIncorrectGuesses_span = document.getElementById("currentIncorrectGuesses"); //scoreboard incorrect guesses counter
+let textOutput_span = document.getElementById("textOutput"); // white text
+let correctGuessesWord_span = document.getElementById("correctGuessesWord"); // black text
+let secretWord_input = document.getElementById("secretWord"); // secret word from input box
+let letter_buttons = document.getElementById("buttonsContainerID").value;
+
+//App Variables
+let incorrectGuesses = 0; // counter placeholder for currentIncorrectGuesses_span
+let secretWordArray;
+let guessedLetters = [];
+
+//Constants
 const newGame_button = document.getElementById("newGameButton");
-
+const words = {};
 const maxIncorrectGuesses = 8;
-let currentIncorrectGuesses = 0;
-let turnCounter = 0;
-var correctGuessesWord_span = document.getElementById("correctGuessesWord");
-const textOutput_span = document.getElementById("textOutput");
-const currentIncorrectGuesses_span = document.getElementById("currentIncorrectGuesses");
-let secretWord_input = document.getElementById("secretWord").value;
-const testAlpha_button = document.getElementById("testAlpha").value;
-// // // // // // // //
 
-//*******************************************
-// VERIFIED AS DONE
-// listen for new game button clic
+
+// Start webpage modifiers
+textOutput_span.innerHTML = 'Welcome to the game of Hangman! Type a secret word in text box to start. Only letters will be saved. ';//update white text
+
+// Trigger a new game
 newGame_button.addEventListener('click', function() {
-  console.log('new game button has been pressed')
-  const secretWordResult = getAndCheckSecretWord(); // array
-  //let gameState =
-  updateBlackText(secretWordResult, )
-  return secretWordResult;
+  // words.secretWord = secretWord;
+  words.secretWord = getAndCheckSecretWord();
+  //set incorrect number and letter counters to 0 and display and previously guessed letters
+  incorrectGuesses = 0;
+  document.getElementById('buttonsContainerID').style.display = "";
+  guessedLetters.forEach((elem) => {document.getElementById(elem).style.display = "";})
+  guessedLetters = [];
+  return;
 });
 
-//keep
+
 function getAndCheckSecretWord() {
-  //accepts only letters
-  secretWord_input = document.getElementById("secretWord").value;
-  const regex = /[A-Za-z]/gi;
-  let matches = secretWord_input.match(regex)
-  console.log(matches); // array
-  if (matches === null) {
-    textOutput_span.innerHTML = `The entered word ${matches} was not correct, insert a new word and click "New Game".`
-  } else if (matches.length) {
-    textOutput_span.innerHTML = `OK! Pick a Letter.`
-    return matches.toLowerCase(); // lowercase array
+  const givenSecretWord = document.getElementById("secretWord").value.toLowerCase();
+  secretWordArray = givenSecretWord.match(/[A-Za-z]/gi);
+
+  if (secretWordArray === null || secretWordArray === undefined) {
+    textOutput_span.innerHTML = `The entered word '${givenSecretWord}' was not valid, insert a new word and click "New Game".`
+    return;
+  } else if (secretWordArray.length) {
+    // update the text insert box (secret word input)
+    secretWord_input.innerHTML = document.getElementById("secretWord").value = '';
+    // update black text
+    correctGuessesWord_span.innerHTML = '-'.repeat(secretWordArray.length);
+    // update white text
+    textOutput_span.innerHTML = `OK! Pick a letter.`
+    // let validatedSecretWord = matches.join('').toLowerCase(); // lowercase string
+    correctGuesses = '-'.repeat(secretWordArray.length);
+    correctGuessesWord_span.innerHTML = correctGuesses;
+    return secretWordArray.join('');
   }
 };
 
-const updateBlackText = function(secretWordResult, letter, correctGuessesWord_span, turnCounter) {
-  // set the initial black text
-  if (turnCounter === 0) {
-    // fill black text with underscores
-    correctGuessesWord_span.innerHTML = new Array(secretWordResult.length).fill('_');
-  }
-
-  if (secretWordResult.includes(letter)) {
-      //find all indexes of that letter in secret word.
-      // initialize targetLetterIndexes
-      let targetLetterIndexes = [];
-      //filter sercretWordResult Array for the indexes of the target letter
-      secretWordResult.filter((wordLetter, index) => {
-        if (wordLetter === letter) {
-          targetLetterIndexes.push(index);
-      }
-      })
-      // change the black text to show the found letters
-      correctGuessesWord_span = correctGuessesWord_span.replace('_', targetLetterIndexes)
-  }
-}
-
-// ***************************************************
-
-//Press 'New Game' button
-  //Start the main game function or restart a game.
-    //Set constant secretWord equal to call  of 'getSecretWordFunction' (no inputs).
-      //Change white text to "submit a secret word and press submit".
-      //On 'submit' button press, clear the secret word input box.
-      //If secret word is valid.
-        //Return secretWord.
-      //else secretWord is not valid.
-        //Return the function call on 'getSecretWordFunction' again.
-
-  //Make variable gameState = 'string' (correctGuess (currentBlackText === secretWord), incorrectGuess, win, lose)
-
-    //Make guessesObj
-      //secretword: the 'secretWord'
-      //initalBlackText: new Array(secretWord.length).fill('-');
-      //currentBlackText: intial value for currentBlackText is 'intialBlackText'
-        // and will be updated at each letter button click
-      //incorrectGuesses: all incorrect guesses (essentially a missed guess counter)
-      //allLettersGuessed: all letters guesses (essentially a turn counter)
-
-      // helper function displayBlackText(gameState)
-        //Conditional gameState correct guess:
-          //Display guessesObj[currentBlackText]
-        //Conditional gameState incorrect guess: do nothing.
-
-      // helper function displayWhiteText(gameState)
-        //Say 'Pick a letter'
-        //Say conditional: 'Good Guess, guess another letter'
-        //Say conditional: 'Incorrect guess, guess another letter'
-        //Say conditional: 'You win!'
-        //Say conditional: 'You lose!'
-      // helper function grayOutLetterButton
-
-      //Function called if letterButtonIsPressed('letter')
-        //If letter is in secretWord.
-          // get indexes in secretWord
-          // update gameState variable
-            //update guessesObj[currentBlackText] with 'letter' by placing
-            // the letter at each index in currentBlackText
-            //Call helper function displayBlackText(gameState)
-            //Call helper function displayWhiteText(gameState)
-            //Call helper function grayOutLetterButton
-        //if letter not in secretWord
-          // update gameState variable
-          //iterate incorrect guesses counter with incorrect letter
-          //Update currentIncorrectGuesses variable and display it
-          //iterate videoPlayer
-          //Call helper function displayWhiteText
-          //Call helper function grayOutLetterButton
-
-
-
-
-
-
-
-
-
 const chooseLetter = function(letter) {
-  // check if letter is in secretWord
-  // return true/false
-  console.log('letter', letter)
-  return letter;
+  guessedLetters.push(letter);
+
+  if(isCorrectGuess(words.secretWord, letter)) {
+    // hide chosen letter
+    document.getElementById(letter).style.display = "none";
+    // update blackText
+    correctGuesses = updateCorrectGuesses(secretWordArray, letter, correctGuesses);
+    // check if game is over
+    if(isGameOver(words.secretWord, correctGuesses, incorrectGuesses)) return;
+    // update whiteText
+    textOutput_span.innerHTML = `You correctly guessed '${letter}', guess another letter!`;
+
+  } else {
+    // hide chosen letter
+    document.getElementById(letter).style.display = "none";
+    // increase scoreboard incorrect guesses by 1;
+    incorrectGuesses++;
+    currentIncorrectGuesses_span.innerHTML = incorrectGuesses;
+    if (isGameOver(words.secretWord, correctGuesses, incorrectGuesses)) return;
+    // update whiteText
+    textOutput_span.innerHTML = `You incorrectly guessed '${letter}', guess another letter!`;
+  }
+
+  return;
+}
+
+function isGameOver(secretWord, correctGuesses, incorrectGuesses) {
+  if (secretWord === correctGuesses) {
+    textOutput_span.innerHTML = `You correctly guessed ${secretWord}! You Win! Enter a word and press 'New Game' to play again.`;
+    document.getElementById('buttonsContainerID').style.display = "none";
+    return true;
+
+  } else if (incorrectGuesses >= maxIncorrectGuesses) {
+    textOutput_span.innerHTML = `You've ran out of guesses while trying to guess ${secretWord}. Your hangman is dead. You lose... Enter a word and press 'New Game' to play again.`;
+    correctGuessesWord_span.innerHTML = `Game Over`;
+    document.getElementById('buttonsContainerID').style.display = "none";
+    return true;
+
+  } else {
+    return false;
+  }
+}
+
+function isCorrectGuess(secretWordArray,letter) {
+  return secretWordArray.includes(letter);
+}
+
+function updateCorrectGuesses(secretWordArray, letter, correctGuesses) {
+  secretWordArray.forEach((element, index) => {
+    if (element === letter) {
+      correctGuessesArray = correctGuesses.split('');
+      correctGuessesArray[index] = letter;
+      correctGuesses = correctGuessesArray.join('');
+    }
+  })
+  correctGuessesWord_span.innerHTML = correctGuesses;
+  return correctGuesses;
 }
 
 
-//isLetterInSecretWord === true:
-  //update the black text
-  //
 
-
-
-// function updateWhiteText(gameState) {
-//   console.log('in updateWhiteText');
-//   switch(gameState) {
-//     case 'started':
-//       textOutput_span.innerHTML = "Game started, pick a letter";
-//       break;
-//     case win:
-//       textOutput_span.innerHTML = "Good job, you won!!";
-//       break;
-//     case lose:
-//       textOutput_span.innerHTML = "He's dead, Jim";
-//       break;
-//     case correct:
-//       textOutput_span.innerHTML = "Nice guess, pick another letter";
-//       break;
-//     case incorrect:
-//       textOutput_span.innerHTML = "Oooh darn, pick another letter";
-//       break;
-//   }
-
-// }
-
-
-
-
-
-
-
-// // get input from html file
-// function startNew() {
-//   secretWord = secretWord.toLowerCase();
-//   let underscoresLength = secretWord.length();
-//   console.log('secret word: ', secretWord_input)
-//   return secretWord;
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
+//----------------------
+// video player
 
 //
 // videoPlayer.js
