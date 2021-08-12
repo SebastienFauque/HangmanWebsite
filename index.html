@@ -6,21 +6,17 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <!--Website header    -->
     <header>
       <h1>Hangman featuring James Franco</h1>
     </header>
-    <!--     scores-->
     <div class="scoreBoard">
       <div id="incorrectGuesses" class="badge">Incorrect guesses</div>
       <div id="maxIncorrectGuesses" class="badge">Maximum incorrect guesses</div>
       <span id="currentIncorrectGuesses">0</span>/<span id="maxIncorrectGuessesNumber">8</span>
     </div>
 
-    <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
-    <div class="playerContainer" id="player"></div>
+      <iframe id='player' width="560" height="315" src="https://www.youtube-nocookie.com/embed/bp6CYzCQCYw?start=4&end=6&modestbranding=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    <!-- text output-->
     <div id="textOut">
       <span id='textOutput'>Welcome to the game of Hangman! Type a secret word into the text box and press 'New Game'.</span>
     </div>
@@ -59,22 +55,11 @@
       <button id='z' class="buttonStyle" onclick="chooseLetter('z')">z</button>
     </div>
 
-
-
-    <!-- text input-->
     <div class="textInput">
-      <input type="text" id="secretWord" placeholder ="Enter secret word" value=""> <!--  enter something into textbox -->
-      <button id="newGameButton"> New Game </button> <!-- assign textbox text to app.js variable named myText_input-->
+      <input type="text" id="secretWord" placeholder ="Enter secret word" value="">
+      <button id="newGameButton"> New Game </button>
     </div>
 
-    <!-- <div class="click-letter">
-      <
-    </div>
-  -->
-
-
-
-    <script src="videoPlayer.js" charset="utf-8"></script>
     <script src="app.js" charset="utf-8"></script>
   </body>
 </html>
