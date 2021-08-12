@@ -45,6 +45,7 @@ newGame_button.addEventListener('click', function() {
   words.secretWord = getAndCheckSecretWord();
   //set incorrect number and letter counters to 0 and display and add previously guessed letters
   incorrectGuesses = 0;
+  currentIncorrectGuesses_span.innerHTML = incorrectGuesses;
   document.getElementById('player').style.display = "";
   document.getElementById('buttonsContainerID').style.display = "";
   guessedLetters.forEach((elem) => {document.getElementById(elem).style.display = "";})
@@ -79,9 +80,11 @@ const chooseLetter = function(letter) {
     document.getElementById(letter).style.display = "none";
     // update blackText
     correctGuesses = updateCorrectGuesses(secretWordArray, letter, correctGuesses);
-    if(isGameOver(words.secretWord, correctGuesses, incorrectGuesses)) return;
+    if(isGameOver(words.secretWord, correctGuesses, incorrectGuesses)) {
+      document.getElementById('player').src = 'https://www.youtube-nocookie.com/embed/04854XqcfCY?start=38&end=77&autoplay=1&modestbranding=1';
+      return;
+    }
     textOutput_span.innerHTML = `You correctly guessed '${letter}', guess another letter!`;
-
   } else {
     //set up and play next video
     document.getElementById('player').src = prefix+movieIds[incorrectGuesses]+suffixList[incorrectGuesses];
